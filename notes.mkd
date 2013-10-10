@@ -1,0 +1,54 @@
+Design
+-----
+
+* Gnonlin → Thibault
+* Timeline, layer, tracks, elements → Mathieu
+
+→ Any of Gst features can be used... meaning → broadcasting etc... → Thibault
+
+Features
+--------
+
+  * Integrated mixing → Mathieu
+  * Asset management →  Thibault
+  * Effect → Thibault
+  * Transition → Mathieu
+  * Titles → Thibault
+  * Keyframes → Mathieu
+  * Advanced timeline edition modes → Thibault
+  * Project formatting → Thibault
+  * High level interfaces to audio volume, video alpha and geometry, all of them keyframable → Mathieu
+  * Multiplatform → Thibault
+
+Current state
+-------------
+
+  * 1.2 Released → Thibault
+     stable API and ABI → Thibault
+  * Tested → Mathieu
+      Unit
+      Integration
+      QA for gstreamer
+  * Fully introspected → Mathieu
+
+Use cases
+----------
+
+  * Featureful video editor: Pitivi → Thibault
+  * Simple project player → Thibault
+  * High-level simple mixing (automatic videoscaling) → Mathieu
+  * Live edition software → Thibault
+  * Server for online edition → Mathieu
+  * Client-based online edition API: http://www.phoronix.com/scan.php?page=news_item&px=MTAxMDc → Thibault
+
+Future possibilities
+--------------------
+
+  * Collaborative editing → Mathieu
+  * Speed control → Mathieu
+  * Hardware acceleration → Thibault
+  * Nested timelines  → Thibault
+  * Proxy editing → Thibault
+
+Demo
+Mathieu.
