@@ -1,0 +1,103 @@
+Features
+--------
+
+* Timeline, layer, tracks, elements
+
+  We provide a high level API with video edition semantics, anyone familiar with
+  video editing should be able to quickly figure out how to use GES, as opposed
+  to lower level concepts such as "source" and "composition".
+
+* Integrated mixing
+  
+  Doing video and audio mixing in GES is as straightforward as setting the "mixing"
+  property of a timeline to "True", adding video elements in different layers and manipulating
+  their alpha property.
+  We also provide nice commodities such as automatic rescaling, which
+  means you don't have to worry about the sizes of your videos being different, we will make
+  it look "just right" anyway.
+
+* Transitions
+
+  In previous versions of GES, you had to set transitions yourself, and figure out how
+  to set their priorities etc, which was not really intuitive. Now you can just set
+  "auto-transitions" to true on either the timeline or individual layers, and we will take
+  care of adding, removing and updating them when elements overlap on the same layer.
+  We support crossfades and all kinds of standard transitions, such as screen swipe.
+
+* Keyframes
+
+  Keyframes are "control points", allowing you to change the value of any controllable property
+  of any gstreamer element smoothly over time (think "red component" in an RGB manipulation element
+  for instance)
+
+  We exposed the GstController API. We made the
+  choice to expose it as is as the API really maps what we wanted to offer, in consequence
+  the naming of the API feels a little lower level but it's very functionnal. We just wrap it
+  so that we can offer saving and loading of the control points.
+
+* High level interfaces to audio volume, video alpha and geometry.
+
+  In GES, video sources all share the common properties of alpha, size and position.
+  As I mentioned earlier, we will rescale the incoming videos automatically when mixing
+  them, but you still have the choice to change their size manually, as well as their
+  position on the screen. Nice bonus is that you can also change them dynamically thanks
+  to keyframes !
+
+  Their audio counterparts share a "volume" property, animatable as well.
+
+Current state
+-------------
+
+* Tested
+
+  Testing is of course obvious to a lot of us, and from its inception GES was unit tested.
+  Development is usually test-driven, so GES in and of itself is pretty well tested with
+  a good coverage.
+
+  However, real life scenarios are very difficult to test with unit testing, and that's why
+  we needed a, "integration" test suite. Basically we use all sorts of input / output formats
+  in all sorts of basic scenarios (transition, mixing, effects, etc...) and validate the result,
+  to make sure what we ask from gstreamer is correctly supported. When it's not, we fix it
+  upstream, because we are good open source citizens.
+
+* Fully introspected.
+
+  GES offers a very high level API, so it's extremely important to us that it can be used
+  from higher level languages. Not much to say here as the introspection guys diserve all
+  the praise for this, apart from the fact that we are "introspection-friendly".
+
+Use cases
+---------
+
+* High level simple mixing.
+
+  As soon as you want to mix two video sources together, you should seriously consider using GES,
+  as it will abstract a lot of the complexity for you, and will do that fairly well, with zero
+  performance cost.
+
+* Server for online edition.
+
+  This one is very interesting ! Basically, due to our design it will be very easy to deploy
+  a server side edition service, as it is only a matter of setting the audio and video sinks (outputs)
+  to network sinks, and connect to them in the client.
+
+Future possibilities
+--------------------
+
+* Collaborative editing.
+
+  Extending asset management to multi-user use cases is part of our picture of the future of GES.
+
+* Speed control.
+
+  We had a google summer of code targeted at this feature this summer, however this proved to
+  be a little challenging for a newcomer to finalize. Good progress has been made though, and we
+  would be able to finish that quickly for a "fixed speed" first step.
+
+  In my spare time I also had fun with porting slowmovideo's code to gstreamer and make it a plugin,
+  which means we can simulate high fps slow motion for certain types of input streams.
+
+Demo
+----
+
+Gonna make it now.
