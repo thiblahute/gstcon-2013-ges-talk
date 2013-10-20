@@ -1,7 +1,51 @@
-[bottom]
+[center]
 --- [black] [center]
 
 The GStreamer editing services
 
+--- [Design.jpeg][center]
+
+<big>Design</big>
+
 ---
 
+  ✓ The GStreamer Editing Services is a library, not a plugin
+
+
+  ✓ GES Wraps the gnonlin plugin
+
+---
+  <big>Gnonlin</big>
+# Gnonlin is a set of plugin aiming at creating pipeline dynamically
+# through time.
+
+  ✓ GnlObject
+# Basically a simple GstBin with timing properties (start, inpoint,
+# duration, priority)
+  ✓ GnlComposition
+# The composition is the master bin where the magic happens, you add
+# gnlobject to it and it is responsible for linking/unlinking elements
+# together to recreate ther pipeline coresponding to the objects it
+#  contains at a certain point in time.
+  ✓ GnlSource
+# A GnlSource is a simple source element in a pipeline, it is a bin 
+# that will always contain only 1 src pad and not sinkpad
+  ✓ GnlOperation
+# A GnlOperation is a bin that contain 1-n sinkpads and 1-m srcpads,
+# It is mainly used for effects, transitions and mixers
+
+--- [GES timeline tracks, objects and layers explanation.png][top]
+
+High level architecture
+
+---
+<big>The timeline is usable as any GStreamer element</big>
+
+# Any GStreamer element can be used within GES, and its architecture lets you use a timeline, the central part of GES as any
+# GStreamer element, opening up the field of possibilities
+
+---
+
+Features
+
+---
