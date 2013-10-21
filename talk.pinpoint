@@ -1,7 +1,20 @@
+b# hack stupide qui contourne un des bugs du presenter screen: utiliser un black backround image [default black background.png] #[bottom] [font=Cantarell 40px] [notes-font=Droid Sans] [notes-font-size=35px] # 40 minutes [duration=40] #~~~~~ TODO THIBAULT - stuff to add to the "technical overview" part # With the layers, you don't truly need care about what is audio, video etc... you care about your story more than the technical details. Layers care about what Edward calls "natural objects", or what I would call "shots" or "takes". It's media-agnostic. The layers will then control what's going in the background in terms of priorities (down to the gnonlin objects).  # Timeline objects can be pretty much anything. For your convenience, we already provide things like filesource (video, audio, picture), transitions, etc. But you can always extend and create your own types of timeline objects.  # thibault should explain gst discoverer, gstprofile and encodebin, in detail. Based on edward's meeconf talk.  ### # media library/assets management, materials # formatters, tente de convaincre qu'on peut écrire du EDL et fcp xml et avid et ...  # groupings, et nested timelines --- <big>GStreamer Editing Services</big> Jean-François Fortin Tam &amp; Thibault Saunier <span color="#666">Collabora</span>
+# PRÉPARATIFS:
+# - désactiver les notifications gnome shell
+# - utiliser ma souris sans fil comme presenter remote, m'évitera de me pencher!
+#
+# "Good afternoon everybody.
+# My name is Thibault Saunier, and together with Mathieu I will be giving the presentation on the GStreamer Editing Services."
 [center]
 --- [black] [center]
 
 The GStreamer editing services
+
+# Who are we? Mathieu, wanna talk about yourself a little bit?
+# Mathieu: ...
+#
+# Thibault: started in GSoC 2010, employed by collabora for gst dev the same year
+# co-maintainer of pitivi and main developer of GESand gnonlin set of GStreamer plugin
 
 --- [Design.jpeg][center]
 
@@ -33,6 +46,7 @@ The GStreamer editing services
   ✓ GnlOperation
 # A GnlOperation is a bin that contain 1-n sinkpads and 1-m srcpads,
 # It is mainly used for effects, transitions and mixers
+# Getting gnonlin working with 1.0 was quite challenging, not really because of the API changes but because we needed to fix, mainly others plugins to handle the dynamic pipeline use case and fix many little details (mainly segments hanldling, fixing videomixer, adder)... We also reworked the API to make to be able to support modifyin the composition while playing.
 
 --- [GES timeline tracks, objects and layers explanation.png][top]
 
@@ -51,6 +65,35 @@ Features
 --- [center]
 
 A nice API IS a feature
+
+---
+
+Effects
+
+# Basically any gstreamer element effect can be used. A high level Api is provided so to set (possibly with keyframez) their properties.
+
+---
+
+Titles
+
+# GES provides a simple, still qite basic api to creat titles. It is basically a combination of videotestsrc and a textoverlay.
+
+---
+
+Advanced timeline edition API
+
+# GES offers APIs for advanced timelineedition mode, which means rippling, rolling, trimming... 
+
+
+	ges_clip_edit ()
+
+# TODO screencast?
+
+----
+
+Project
+
+# we have simple API to bandle projects, their assets (project are assets themselves),Project can be be formatted and reloaded easyly with the the formatters avalaible.
 
 --- [willitblend.jpg][center]
 
@@ -77,3 +120,24 @@ Testing
 Introspection
 
 ---
+
+Multiplatform
+
+# As the rest of GStreamer, Ges is cross platform, and can be built on the various platforms supported by cerbero, tool used to build the SDK and various upstream binary builds
+
+---
+
+<big>Curent sate</big>
+
+ ✓ 1.90.0 Release, 1.2 should be out really soon no!
+
+  ✓ Stable API and ABI
+
+---
+
+Use cases
+
+#This is a set of use cases that GES should already be able to support.
+
+---
+

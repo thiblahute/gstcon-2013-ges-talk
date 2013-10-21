@@ -36,8 +36,8 @@ Use cases
 
   * Featureful video editor: Pitivi → Thibault
   * Simple project player → Thibault
-  * High-level simple mixing (automatic videoscaling) → Mathieu
   * Live edition software → Thibault
+  * High-level simple mixing (automatic videoscaling) → Mathieu
   * Server for online edition → Mathieu
   * Client-based online edition API: http://www.phoronix.com/scan.php?page=news_item&px=MTAxMDc → Thibault
 
